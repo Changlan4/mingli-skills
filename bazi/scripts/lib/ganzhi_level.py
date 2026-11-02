@@ -146,7 +146,7 @@ def render_levels(r):
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    # 书中的例子：郑先生 己卯 戊辰 戊子 甲寅，书载等级（下）（上）（上）（上）
+    # 书中的例子：命例壬 己卯 戊辰 戊子 甲寅，书载等级（下）（上）（上）（上）
     zheng = [("己", "卯"), ("戊", "辰"), ("戊", "子"), ("甲", "寅")]
-    print("郑先生 己卯 戊辰 戊子 甲寅（原书标注：下·上·上·上）")
+    print("命例壬 己卯 戊辰 戊子 甲寅（原书标注：下·上·上·上）")
     print(render_levels(four_levels(zheng)))

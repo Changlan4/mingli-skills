@@ -24,7 +24,7 @@ from strength import changsheng
 GE_NAMES = ["伤官", "食神", "正财", "偏财", "正官", "七杀", "正印", "偏印"]
 
 # 天干五合：合则两干皆受牵制，成格能力受损。
-# 李敖一例正是「乙木偏财遭月干庚金劫财合克」，故偏财不能成格（原书 p215）。
+# 命例甲正是「乙木偏财遭月干庚金劫财合克」，故偏财不能成格（原书 p215）。
 HE_PAIRS = [("甲", "己"), ("乙", "庚"), ("丙", "辛"), ("丁", "壬"), ("戊", "癸")]
 
 
@@ -122,7 +122,7 @@ def geju(pillars, day_gan):
                 break
         if main_ge is None:
             # 月令透干的全被合克 → 转看全局透出的十神，但必须排除已被合克的那些。
-            # 李敖命例即此路：乙木偏财被庚合，退取壬水伤官为格（原书 p215）。
+            # 命例甲即此路：乙木偏财被庚合，退取壬水伤官为格（原书 p215）。
             blocked_names = {it["十神"] for it in month_info if it["透干"] and it["被合"]}
             best_global = [(k, v) for k, v in weights.items()
                            if k in GE_NAMES and v > 0 and k not in blocked_names]
@@ -180,12 +180,12 @@ def render_geju(g):
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    # 毛泽东 癸巳 甲子 丁酉 甲辰（书中命例 9，丁火日主）
+    # 书载命例 9：癸巳 甲子 丁酉 甲辰（丁火日主）
     mzd = [("癸", "巳"), ("甲", "子"), ("丁", "酉"), ("甲", "辰")]
-    print("毛泽东 癸巳 甲子 丁酉 甲辰")
+    print("命例9 癸巳 甲子 丁酉 甲辰")
     print(render_geju(geju(mzd, "丁")))
     print()
-    # 李敖 乙亥 庚辰 辛未 壬辰，书中明言「伤官格」
+    # 命例甲 乙亥 庚辰 辛未 壬辰，书中明言「伤官格」
     liao = [("乙", "亥"), ("庚", "辰"), ("辛", "未"), ("壬", "辰")]
-    print("李敖 乙亥 庚辰 辛未 壬辰（书中明言伤官格）")
+    print("命例甲 乙亥 庚辰 辛未 壬辰（书中明言伤官格）")
     print(render_geju(geju(liao, "辛")))

@@ -101,7 +101,7 @@ def _pairs_from_text(text):
                 break
 
     # 大运：从"大运"所在行开始往后取干支。注意不能按"是否与四柱相同"过滤——
-    # 大运第一个干支很可能恰好与年柱/月柱同字（如李敖年柱乙亥，第五步大运也是乙亥）。
+    # 大运第一个干支很可能恰好与年柱/月柱同字（如命例甲年柱乙亥，第五步大运也是乙亥）。
     for i, ln in enumerate(lines):
         if "大运" in ln or "运程" in ln:
             chunk = "\n".join(lines[i:i + 6])
